@@ -14,25 +14,41 @@ const notes = [
 ];
 // console.log(notes);
 
-// This findNote function uses find() to return the array which matches the
-// search parameter ('office modification' in this example).
-const findNote = function (arrayName, objectTitle) {
-  return arrayName.find(function (item, index) {
-    return item.title.toLowerCase === objectTitle.toLowerCase;
+// Using filter() to find any object within the array,
+// which matches the query parameter provided.
+// (remove comments to filter in the body property as well)
+
+const findNotes = function (arrayName, query) {
+  return notes.filter(function (object, index) {
+    const isTitleMatch = object.title
+      .toLowerCase()
+      .includes(query.toLowerCase());
+    // const isBodyMatch = object.body.toLowerCase().includes(query.toLowerCase());
+
+    return isTitleMatch; //|| isBodyMatch;
   });
 };
-const note = findNote(notes, "OFFice modIficATion");
-console.log(note);
+console.log(findNotes(notes, "to"));
+
+// This findNote function uses find() to return the array which matches the
+// search parameter ('office modification' in this example).
+// const findNote = function (arrayName, objectTitle) {
+//   return arrayName.find(function (item, index) {
+//     return item.title.toLowerCase === objectTitle.toLowerCase;
+//   });
+// };
+// const note = findNote(notes, "OFFice modIficATion");
+// console.log(note);
 
 // This findNote function uses findIndex() to return the array which matches the
 // search parameter ('office modification' in this example).
 // The index variable defined is a -1 if not found.
-const findNote = function (arrayName, objectTitle) {
-  const index = arrayName.findIndex(function (item, index) {
-    return item.title.toLowerCase === objectTitle.toLowerCase;
-  });
-  return arrayName[index];
-};
+// const findNote = function (arrayName, objectTitle) {
+//   const index = arrayName.findIndex(function (item, index) {
+//     return item.title.toLowerCase === objectTitle.toLowerCase;
+//   });
+//   return arrayName[index];
+// };
 
 // const note = findNote(notes, "OFFice modIficATion");
 // console.log(note);
